@@ -43,7 +43,7 @@ Abaixo a lista de flags que foram modificadas no arquivo original.
 Para gerar a documentação, utilizar:
 
     $ doxygen Doxyfile
-**Atenção: Criar antes um diretório ./build/**
+**Atenção: Criar antes um diretório ./doc/**
 
 ### **Remover arquivos auxiliares**
 ---
