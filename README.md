@@ -25,22 +25,6 @@ Esse programa é um jogo do gênero "top-down" com a temática de que você é u
 
 ## **Documentação**
 ---
-É necessário ter na raiz do projeto um arquivo Doxyfile. Um arquivo padrão pode ser gerado pelo comando:
-
-    $ doxygen -g
-Abaixo a lista de flags que foram modificadas no arquivo original.
-
-    PROJECT_NAME           = "PDS2 - Mini-projeto de exemplo"
-
-    OUTPUT_DIRECTORY       = doc/
-
-    RECURSIVE              = YES
-
-    EXTRACT_ALL            = YES
-    EXTRACT_PRIVATE        = YES
-    EXTRACT_STATIC         = YES
-
-    HAVE_DOT               = NO
 Para gerar a documentação, utilizar:
 
     $ doxygen Doxyfile
