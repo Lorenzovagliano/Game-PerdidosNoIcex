@@ -17,7 +17,7 @@ class LevelMenu
         /**
          *  Botão do mouse ou menu apertado
          */
-        bool pressed
+        bool pressed;
         /**
          *  Opção selecionada com mouse
          */
