@@ -56,6 +56,20 @@ void GameWorld::setUpEnemyPositions(int idFase){
             return;
         } 
     }
+    else if(idFase == 3){
+        newFile.open("levels/level3Objetos.txt");
+        if(newFile.fail()) {
+            std::cout << "Unable to open file";
+            return;
+        } 
+    }
+    else if(idFase == 4){
+        newFile.open("levels/level4Objetos.txt");
+        if(newFile.fail()) {
+            std::cout << "Unable to open file";
+            return;
+        } 
+    }
     else{
         std::cout << "Level not available\n";
         return;
@@ -92,6 +106,20 @@ void GameWorld::setUpTiles(int idFase){
     }
     else if(idFase == 2){
         newFile.open("levels/level2.txt");
+        if(newFile.fail()) {
+            std::cout << "Unable to open file";
+            return;
+        } 
+    }
+    else if(idFase == 3){
+        newFile.open("levels/level3.txt");
+        if(newFile.fail()) {
+            std::cout << "Unable to open file";
+            return;
+        } 
+    }
+    else if(idFase == 4){
+        newFile.open("levels/level4.txt");
         if(newFile.fail()) {
             std::cout << "Unable to open file";
             return;
