@@ -1,5 +1,6 @@
 #include "Player.hpp"
 
+
 Player::Player(float cordX, float cordY){
     this->_sprite.setPosition(sf::Vector2f(cordX * 64, cordY * 64));
     this->_up = false;
@@ -7,11 +8,14 @@ Player::Player(float cordX, float cordY){
     this->_right = false;
     this->_left = false;
     this->_movimentos = 0;
+    this->possuiTesoura = false;
 }
+
 
 void Player::drawTo(sf::RenderWindow &window){
     window.draw(this->_sprite);
 }
+
 
 void Player::processEvents(sf::Keyboard::Key key, bool checkPressed){
     if (checkPressed == true){
@@ -32,6 +36,7 @@ void Player::processEvents(sf::Keyboard::Key key, bool checkPressed){
     }
 }
 
+
 void Player::update(GameWorld& map)
 {
     sf::Vector2f movement;
@@ -39,150 +44,197 @@ void Player::update(GameWorld& map)
         movement.y -= 64;
     if(this->_down)
         movement.y += 64;
-    if(this->_right){
+    if(this->_right)
         movement.x += 64;
-    }
     if(this->_left)
         movement.x -= 64;
 
+
+    //VERIFICANDO SE O JOGADOR NÃO QUER SE MOVER PARA UMA PAREDE
     sf::Vector2f nextPlayerPosition = this->_sprite.getPosition() + movement;
-    for(int i = 0; i < map.get_gridLenght(); i++){
-        for(int j = 0; j < map.get_gridLenght(); j++){
-            for(int k = 0; k < map.get_objetos().size(); k++){
-                sf::Vector2f nextObjectPosition = map.get_objetos()[k]->_sprite.getPosition() + movement;
-                //Caso o jogador queira ocupar a posição de um tile
-                if(nextPlayerPosition == map.get_tiles()[i][j]->_sprite.getPosition()){
-                    //Caso o jogador queira ocupar a posição de um tile não passável
-                    if(map.get_tiles()[i][j]->_isPassable == false){
-                        return;
-                    }
-                }
+    if(map.get_tiles()[nextPlayerPosition.x / 64][nextPlayerPosition.y / 64]->_isPassable == false)
+            return;
 
-                //Caso o jogador queira ocupar a posição de um objeto
-                if(nextPlayerPosition == map.get_objetos()[k]->_sprite.getPosition()){
-                    //Caso o jogador queira ocupar a posição do objetivo
-                    if(map.get_objetos()[k]->_isExit == true){
-                        this->_movimentos++;
-                        this->_sprite.move(movement);
-                        map.ganhou = true;
-                        return;
-                    }
+    //ITERANDO PELOS OBJETOS VERIFICANDO SE UM OU MAIS DELES ESTÃO NO TILE PARA O QUAL O JOGADOR SE MOVE
+    bool interagiu = false;
+    for(int o = 0; o < map.get_objetos().size(); o++)
+    {
+        sf::Vector2f nextObjectPosition = map.get_objetos()[o]->_sprite.getPosition() + movement;
 
-                    //Caso o jogador queira ocupar a posição da caixa
-                    if(map.get_objetos()[k]->get_id() == 3){ //id = 3 é a caixa
-                        if(nextObjectPosition == map.get_tiles()[i][j]->_sprite.getPosition()){
-                            //Caso o jogador queira ocupar a posição da caixa e ele está em um armadilha
-                            for(int l = 0; l<map.get_objetos().size(); l++){
-                                if(this->_sprite.getPosition() == map.get_objetos()[l]->_sprite.getPosition()){
-                                    if(map.get_objetos()[l]->get_id() == 4){
-                                        this->_movimentos++;
-                                    }
-                                }
-                            }
-                            //Caso a caixa queira ocupar a posição de um Tile não passável
-                            if(map.get_tiles()[i][j]->_isPassable == false){
-                                this->_movimentos++;
-                                map.get_objetos()[k]->_isPassable == true;
-                                map.get_objetos()[k]->setUpSprite("images/invisible.png");
-                                map.get_objetos()[k]->_sprite.setPosition(i*1333, j*1333);
-                                return;
-                            }
-                            //Caso a caixa queira ocupar a posição de um Tile passável
-                            if(map.get_tiles()[i][j]->_isPassable == true){
-                                this->_movimentos++;
-                                map.get_objetos()[k]->_sprite.move(movement);
-                                return;
-                            }
-                        }
+        if(map.get_objetos()[o]->_sprite.getPosition() == nextPlayerPosition) 
+        {
+            switch (map.get_objetos()[o]->get_id())
+            {
+            case 2:
+                interagirMesa(o, map, nextObjectPosition, movement);
+                interagiu = true;
+                break;
+            
+            case 3:
+                interagirCaixa(o, map, nextObjectPosition, movement);
+                interagiu = true;
+                break;
 
-                        //Caso a caixa queira ocupar a posição de outro objeto
-                        for(int l = 0; l<map.get_objetos().size(); l++){
-                            if(nextObjectPosition == map.get_objetos()[l]->_sprite.getPosition()){
-                                //Caso a caixa queira ocupar a posição de uma armadilha
-                                if(map.get_objetos()[l]->get_id() == 4){ //id = 4 é a armadilha
-                                    this->_movimentos++;
-                                    map.get_objetos()[k]->_isPassable == true;
-                                    map.get_objetos()[k]->setUpSprite("images/invisible.png");
-                                    map.get_objetos()[k]->_sprite.setPosition(i*1333, j*1333);
-                                    return;
-                                }
+            case 4:
+                interagirFantasma(o, map, movement, interagiu);
+                interagiu = true;
+                break;
 
-                                //Caso a caixa queira ocupar a posição de um objeto não passável
-                                if(map.get_objetos()[l]->_isPassable == false){
-                                    this->_movimentos++;
-                                    map.get_objetos()[k]->_isPassable == true;
-                                    map.get_objetos()[k]->setUpSprite("images/invisible.png");
-                                    map.get_objetos()[k]->_sprite.setPosition(i*1333, j*1333);
-                                    return;
-                                }
-                            }
-                        }
-                    }
+            case 5:
+                interagirControle(map, movement);
+                interagiu = true;
+                break;
 
-                    //Caso o jogador queira ocupar a posição da pedra
-                    if(map.get_objetos()[k]->get_id() == 2){
-                        if(nextObjectPosition == map.get_tiles()[i][j]->_sprite.getPosition()){
-                            for(int l = 0; l<map.get_objetos().size(); l++){
-                                //Caso o jogador queira ocupar a posição da pedra e o jogador está em um armadilha
-                                if(this->_sprite.getPosition() == map.get_objetos()[l]->_sprite.getPosition()){
-                                    if(map.get_objetos()[l]->get_id() == 4){
-                                        this->_movimentos++;
-                                    }
-                                }
-                                //Caso a pedra queira ocupar a posição de outro objeto
-                                if(nextObjectPosition == map.get_objetos()[l]->_sprite.getPosition()){
-                                    //Caso a pedra queira ocupar a posição de um objeto passável
-                                    if(map.get_objetos()[l]->_isPassable == true){
-                                        this->_movimentos++;
-                                        map.get_objetos()[k]->_sprite.move(movement);
-                                        return;
-                                    }
+            case 6:
+                interagirTesoura(o, map, movement);
+                break;
 
-                                    //Caso a pedra queira ocupar a posição de um objeto não passável
-                                    if(map.get_objetos()[l]->_isPassable == false){
-                                        return;
-                                    }
-                                }
-                            }
-                            
-                            //Caso a pedra queira ocupar a posição de um Tile não passável
-                            if(map.get_tiles()[i][j]->_isPassable == false){
-                                return;
-                            }
-                            //Caso a pedra queira ocupar a posição de um Tile passável
-                            if(map.get_tiles()[i][j]->_isPassable == true){
-                                this->_movimentos++;
-                                map.get_objetos()[k]->_sprite.move(movement);
-                                return;
-                            }
-                        }   
-                    }
-                    //Caso o jogador queira ocupar a posição de uma armadilha
-                    if(map.get_objetos()[k]->get_id() == 4){
-                        if(nextObjectPosition == map.get_tiles()[i][j]->_sprite.getPosition()){
-                            for(int l = 0; l<map.get_objetos().size(); l++){
-                                //Caso não haja uma pedra em cima da armadilha
-                                if(map.get_objetos()[k]->_sprite.getPosition() == map.get_objetos()[l]->_sprite.getPosition()){
-                                    if((map.get_objetos()[l]->get_id() != 2) && (map.get_objetos()[l]->get_id() != 3)){
-                                        this->_movimentos = this->_movimentos + 2;
-                                        this->_sprite.move(movement);
-                                        return;
-                                    }
-                                    //Caso haja uma pedra em cima da armadilha
-                                    else{
-                                        this->_movimentos = this->_movimentos + 2;
-                                        map.get_objetos()[l]->_sprite.move(movement);
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            case 7:
+                interagirTeia(o, map, movement);
+                interagiu = true;
+                break;
+
             }
         }
     }
-    //Caso o jogador queira ocupar a posição de um tile passável
+
+    if(interagiu == true)
+        return;
+
+    //não havia obstaculos no tile que o jogador tentou se mover
     this->_movimentos++;
     this->_sprite.move(movement);
+
+}
+
+
+
+void Player::interagirMesa(int nMesa, GameWorld &map, sf::Vector2f nextObjectPosition, sf::Vector2f movement)
+{
+    //CASO O JOGADOR INTERAJA COM A MESA ESTANDO SOB UM FANTASMA
+    for(int o = 0; o<map.get_objetos().size(); o++)
+        if(_sprite.getPosition() == map.get_objetos()[o]->_sprite.getPosition() && map.get_objetos()[o]->get_id() == 4)
+            this->_movimentos++;
+
+    //CASO A MESA QUERIA OCUPAR A POSIÇÃO DE UMA PAREDE
+    if(map.get_tiles()[nextObjectPosition.x / 64][nextObjectPosition.y / 64]->_isPassable == false)
+        return;
+
+    //CASO A MESA QUEIRA OCUPAR A POSIÇÃO DE OUTRO OBJETO
+    for(int o = 0; o<map.get_objetos().size(); o++)
+    {
+        if(nextObjectPosition == map.get_objetos()[o]->_sprite.getPosition() && map.get_objetos()[o]->get_id() == 4)
+        {
+            this->_movimentos++;
+            map.get_objetos()[nMesa]->_sprite.move(movement);
+            return;
+        }
+        if(nextObjectPosition == map.get_objetos()[o]->_sprite.getPosition())
+            return;
+    }
+
+    //PODEMOS EMPURRAR A MESA
+    this->_movimentos++;
+    map.get_objetos()[nMesa]->_sprite.move(movement);
+              
+}                             
+                           
+
+
+void Player::interagirCaixa(int nCaixa, GameWorld &map, sf::Vector2f nextObjectPosition, sf::Vector2f movement){
+    
+    //CASO O JOGADOR INTERAJA COM A CAIXA ESTANDO SOB UM FANTASMA
+    for(int o = 0; o<map.get_objetos().size(); o++)
+        if(_sprite.getPosition() == map.get_objetos()[o]->_sprite.getPosition() && map.get_objetos()[o]->get_id() == 4)
+            this->_movimentos++;
+
+    //CASO A CAIXA QUEIRA OCUPAR A POSIÇÃO DE UMA PAREDE
+    if(map.get_tiles()[nextObjectPosition.x / 64][nextObjectPosition.y / 64]->_isPassable == false)
+    {
+        this->_movimentos++;
+        map.get_objetos()[nCaixa]->_isPassable == true;
+        map.get_objetos()[nCaixa]->setUpSprite("tiles/invisible.png");
+        map.get_objetos()[nCaixa]->_sprite.setPosition(-9999, -9999);
+        return;
+    }
+
+    //CASO A CAIXA QUEIRA OCUPAR A POSIÇÃO DE OUTRO OBJETO
+    for(int o = 0; o<map.get_objetos().size(); o++)
+    {
+        if((nextObjectPosition == map.get_objetos()[o]->_sprite.getPosition()) && (map.get_objetos()[o]->get_id() == 4))
+        {
+            this->_movimentos++;
+            map.get_objetos()[nCaixa]->_isPassable == true;
+            map.get_objetos()[nCaixa]->setUpSprite("tiles/invisible.png");
+            map.get_objetos()[nCaixa]->_sprite.setPosition(-9999, -9999);
+            return;
+        }
+        if((nextObjectPosition == map.get_objetos()[o]->_sprite.getPosition()) && (map.get_objetos()[o]->_isPassable == false))
+        {
+            this->_movimentos++;
+            map.get_objetos()[nCaixa]->_isPassable == true;
+            map.get_objetos()[nCaixa]->setUpSprite("tiles/invisible.png");
+            map.get_objetos()[nCaixa]->_sprite.setPosition(-9999, -9999);
+            return;
+        }
+        if((nextObjectPosition == map.get_objetos()[o]->_sprite.getPosition()) && (map.get_objetos()[o]->_isPassable == true))
+            return;
+    }
+
+    //PODEMOS EMPURRAR A CAIXA
+    this->_movimentos++;
+    map.get_objetos()[nCaixa]->_sprite.move(movement);
+                          
+}
+
+
+
+void Player::interagirFantasma(int nFantasma, GameWorld &map, sf::Vector2f movement, bool jaInteragiu)
+{
+    if(jaInteragiu == true)
+        return;
+    
+    for(int o = 0; o<map.get_objetos().size(); o++)
+    {
+        if(map.get_objetos()[nFantasma]->_sprite.getPosition() == map.get_objetos()[o]->_sprite.getPosition())
+        {
+            if((map.get_objetos()[o]->get_id() != 2) && (map.get_objetos()[o]->get_id() != 3))
+            {
+                this->_movimentos = this->_movimentos + 2;
+                this->_sprite.move(movement);
+                return;
+            }
+        }
+    }
+}
+
+
+
+void Player::interagirControle(GameWorld &map, sf::Vector2f movement)
+{
+    this->_movimentos++;
+    this->_sprite.move(movement);
+    map.ganhou = true;
+}
+
+
+
+void Player::interagirTesoura(int nTesoura, GameWorld &map, sf::Vector2f movement)
+{
+    this->possuiTesoura = true;
+    map.get_objetos()[nTesoura]->setUpSprite("tiles/invisible.png");
+    map.get_objetos()[nTesoura]->_sprite.setPosition(-9999, -9999);
+}
+
+
+
+void Player::interagirTeia(int nTeia, GameWorld &map, sf::Vector2f movement){
+   if(possuiTesoura == true) {
+        _movimentos++;
+        map.get_objetos()[nTeia]->_isPassable == true;
+        map.get_objetos()[nTeia]->setUpSprite("tiles/invisible.png");
+        map.get_objetos()[nTeia]->_sprite.setPosition(-9999, -9999);
+        this->_sprite.move(movement);
+        return;
+   }
 }
