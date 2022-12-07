@@ -22,7 +22,7 @@ int main()
     {//LOOP DO MENU PRINCIPAL E JOGO ABERTO
 
         sf::Music musicaMenu;
-        if(!musicaMenu.openFromFile("data/sample4.ogg")) exit(1);
+        if(!musicaMenu.openFromFile("data/palette.ogg")) exit(1);
             musicaMenu.play();
 
         decision = menu->runMenu();
@@ -76,7 +76,7 @@ int main()
                         help[4].setCharacterSize(80);
 
                         sf::Music music;
-                        if(!music.openFromFile("Music_pds2.ogg")) return EXIT_FAILURE;
+                        if(!music.openFromFile("data/levender.ogg")) return EXIT_FAILURE;
                         music.play();
 
                         while(window.isOpen() && tentandofase == true)
