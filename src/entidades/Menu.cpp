@@ -16,6 +16,8 @@ Menu::~Menu()
             delete font;
             delete image;
             delete background;
+
+            std::cout << "Detruido menu\n";
         }
  void Menu::setValues()
         {

@@ -76,7 +76,7 @@ int main()
                         help[4].setCharacterSize(80);
 
                         sf::Music music;
-                        if(!music.openFromFile("data/levender.ogg")) return EXIT_FAILURE;
+                        if(!music.openFromFile("data/lavender.ogg")) return EXIT_FAILURE;
                         music.play();
 
                         while(window.isOpen() && tentandofase == true)

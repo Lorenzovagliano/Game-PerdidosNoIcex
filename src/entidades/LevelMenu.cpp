@@ -21,6 +21,8 @@ LevelMenu:: ~LevelMenu(){
             delete level;
             delete rightArrow;
             delete leftArrow;
+
+            std::cout << "Detruido levelmenu\n";
         
 }
 void LevelMenu::setValues()
@@ -33,8 +35,8 @@ void LevelMenu::setValues()
             textures[0].loadFromFile("data/LevelMenu2.png");
             textures[1].loadFromFile("data/back.png");
             textures[2].loadFromFile("data/select.png");
-            textures[3].loadFromFile("data/leftArrow.png");
-            textures[4].loadFromFile("data/rightArrow.png");
+            textures[3].loadFromFile("data/leftarrow.png");
+            textures[4].loadFromFile("data/rightarrow.png");
 
             background->setTexture(textures[0]);
             back->setTexture(textures[1]);
