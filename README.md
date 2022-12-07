@@ -4,6 +4,19 @@ Esse programa é um jogo do gênero "top-down" com a temática de que você é u
 
 **Observação:** Apesar do menu possuir 8 opções de níveis no menu, apenas 4 níveis foram implementados.
 
+# Puzzle Game(nome provisório)
+
+## Como Jogar
+
+### Objetivo
+O jogador deve conduzir seu herói até o final do campo da fase sem esgotar o número de movimentos máximo que aquela fase permite. Porém, para conseguir isso, ele deverá utilizar estratégias para evitar os obstáculos da forma mais eficiente possível.
+
+### Regras básicas
+* O herói não pode atravessar as paredes laterais da fase.
+* Pedras e caixas podem ser movidas com a condição de que elas possuam um espaço livre atrás no sentido do movimento
+  * Caixas serão destruidas ao serem movidas em direção a um espaço ocupado
+* O herói pode passar por cima das armadilhas, porém elas reduzem seu número de movimentos em dobro em relação a um espaço normal, inclusive quando outro objeto é movido enquanto encima delas
+
 ### **Ferramentas** 
 ---
 - Linguagem: [C++ 11](https://cplusplus.com/doc/)
