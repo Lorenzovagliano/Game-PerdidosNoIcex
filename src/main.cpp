@@ -3,8 +3,8 @@
 #include <iostream>
 #include <string>
 
-#include "menu.hpp"
-#include "levelmenu.hpp"
+#include "Menu.hpp"
+#include "LevelMenu.hpp"
 #include "Player.hpp"
 #include "GameTile.hpp"
 #include "GameWorld.hpp"
