@@ -25,7 +25,7 @@ int main()
         if(!musicaMenu.openFromFile("data/sample4.ogg")) exit(1);
             musicaMenu.play();
 
-        decision = menu->run_menu();
+        decision = menu->runMenu();
         if (decision == 1)
         {//CLIQUEI EM JOGAR E FUI PARA MENU DE FASES
 
@@ -34,7 +34,7 @@ int main()
             {//LOOP DO MENU DE FASES
 
                 LevelMenu * levelMenu = new LevelMenu(window);
-                int fase = levelMenu->run_menu();
+                int fase = levelMenu->runMenu();
                 if (fase > -1) 
                 {//CLIQUEI EM JOGAR ALGUMA FASE 
 
