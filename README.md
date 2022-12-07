@@ -13,6 +13,7 @@ Esse programa é um jogo do gênero "top-down" com a temática de que você é u
 ### **Ferramentas** 
 ---
 - Linguagem: [C++ 11](https://cplusplus.com/doc/)
+- Biblioteca: [SFML](https://www.sfml-dev.org/)
 - Compilação: [Make](https://www.gnu.org/software/make/)
 - Documentação: [Doxygen](https://doxygen.nl/)
 
@@ -20,7 +21,9 @@ Esse programa é um jogo do gênero "top-down" com a temática de que você é u
 ### **Compilação**
 ---
     $ make
-**Atenção: Criar antes um diretório ./build/**
+**Atenção: 
+**Para compilar, é necessário ter a biblioteca SFML instalada no linux. O comando pode depender da sua distro. No Ubuntu, utilizar: sudo apt-get install libsfml-dev
+**Criar antes um diretório ./build/**
 
 ## **Documentação**
 ---
