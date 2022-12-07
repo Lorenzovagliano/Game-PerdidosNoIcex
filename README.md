@@ -20,7 +20,7 @@ Esse programa é um jogo do gênero "top-down" com a temática de que você é u
 ### **Compilação**
 ---
     $ make
-**Atenção: Criar antes um diretório ./doc/**
+**Atenção: Criar antes um diretório ./build/**
 
 ## **Documentação**
 ---
@@ -43,6 +43,7 @@ Abaixo a lista de flags que foram modificadas no arquivo original.
 Para gerar a documentação, utilizar:
 
     $ doxygen Doxyfile
+**Atenção: Criar antes um diretório ./build/**
 
 ### **Remover arquivos auxiliares**
 ---
