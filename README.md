@@ -21,9 +21,7 @@ Esse programa é um jogo do gênero "top-down" com a temática de que você é u
 ### **Compilação**
 ---
     $ make
-**Atenção: 
-**Para compilar, é necessário ter a biblioteca SFML instalada no linux. O comando pode depender da sua distro. No Ubuntu, utilizar: sudo apt-get install libsfml-dev
-**Criar antes um diretório ./build/**
+**Atenção: Para compilar, é necessário ter a biblioteca SFML instalada no linux e criar um diretório ./build/**. O comando pode depender da sua distro. No Ubuntu, utilizar: sudo apt-get install libsfml-dev.
 
 ## **Documentação**
 ---
