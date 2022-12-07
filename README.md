@@ -4,8 +4,6 @@ Esse programa é um jogo do gênero "top-down" com a temática de que você é u
 
 **Observação:** Apesar do menu possuir 8 opções de níveis no menu, apenas 4 níveis foram implementados.
 
-## Como Jogar
-
 ### Regras básicas
 * O herói não pode atravessar as paredes laterais da fase.
 * Pedras e caixas podem ser movidas com a condição de que elas possuam um espaço livre atrás no sentido do movimento
