@@ -6,9 +6,6 @@ Esse programa é um jogo do gênero "top-down" com a temática de que você é u
 
 ## Como Jogar
 
-### Objetivo
-O jogador deve conduzir seu herói até o final do campo da fase sem esgotar o número de movimentos máximo que aquela fase permite. Porém, para conseguir isso, ele deverá utilizar estratégias para evitar os obstáculos da forma mais eficiente possível.
-
 ### Regras básicas
 * O herói não pode atravessar as paredes laterais da fase.
 * Pedras e caixas podem ser movidas com a condição de que elas possuam um espaço livre atrás no sentido do movimento
