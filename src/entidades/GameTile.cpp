@@ -80,7 +80,7 @@ GameTile::GameTile(int id, float cordX, float cordY){
     }
     else{
         this->_id = 1;
-        this->_textureName = "images/error.png";
+        this->_textureName = "tiles/error.png";
         this->_isPassable = true;
         this->_isExit = false;
     }
