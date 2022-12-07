@@ -1,4 +1,4 @@
-#include "menu.hpp"
+#include "Menu.hpp"
 
  Menu::Menu(sf::RenderWindow &w)
         {
