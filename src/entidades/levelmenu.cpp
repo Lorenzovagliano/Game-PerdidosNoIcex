@@ -7,10 +7,10 @@ LevelMenu::LevelMenu(sf::RenderWindow &w)
             back = new sf::Sprite();
             select = new sf::Sprite();
             level = new sf::Sprite();
-            rightarrow = new sf::Sprite();
-            leftarrow = new sf::Sprite();
+            rightArrow = new sf::Sprite();
+            leftArrow = new sf::Sprite();
 
-            set_values();
+            setValues();
         }
 
 LevelMenu:: ~LevelMenu(){
@@ -19,28 +19,28 @@ LevelMenu:: ~LevelMenu(){
             delete back;
             delete select;
             delete level;
-            delete rightarrow;
-            delete leftarrow;
+            delete rightArrow;
+            delete leftArrow;
         
 }
-void LevelMenu::set_values()
+void LevelMenu::setValues()
         {
             pos = -1;
             pressed = false;
-            mouseselect = false;
+            mouseSelect = false;
             
             textures.resize(8);
             textures[0].loadFromFile("data/LevelMenu2.png");
             textures[1].loadFromFile("data/back.png");
             textures[2].loadFromFile("data/select.png");
-            textures[3].loadFromFile("data/leftarrow.png");
-            textures[4].loadFromFile("data/rightarrow.png");
+            textures[3].loadFromFile("data/leftArrow.png");
+            textures[4].loadFromFile("data/rightArrow.png");
 
             background->setTexture(textures[0]);
             back->setTexture(textures[1]);
             select->setTexture(textures[2]);
-            rightarrow->setTexture(textures[3]);
-            leftarrow->setTexture(textures[4]);
+            rightArrow->setTexture(textures[3]);
+            leftArrow->setTexture(textures[4]);
 
             levels.resize(8);
             levels[0].loadFromFile("data/isaac1f.png");
@@ -52,23 +52,23 @@ void LevelMenu::set_values()
             levels[6].loadFromFile("data/isaac7f.png");
             levels[7].loadFromFile("data/isaac8f.png");
 
-            pos_mouse = {0,0};
-            mouse_coord = {0, 0};
+            posMouse = {0,0};
+            mouseCoord = {0, 0};
 
-            option_box.resize(4);
+            optionBox.resize(4);
             coords = {{631, 59}, {463, 446}, {166, 359}, {351, 359}};
-            box_sizes = {{92, 40}, {143, 76}, {44, 33}, {44, 33}};
+            boxSizes = {{92, 40}, {143, 76}, {44, 33}, {44, 33}};
 
             back->setPosition(coords[0]);
             select->setPosition(coords[1]);
-            rightarrow->setPosition(coords[2]);
-            leftarrow->setPosition(coords[3]);
+            rightArrow->setPosition(coords[2]);
+            leftArrow->setPosition(coords[3]);
 
             for (int i = 0; i < 4; i++)
             {
-                option_box[i].setSize(box_sizes[i]);
-                option_box[i].setPosition(coords[i]);
-                option_box[i].setFillColor(sf::Color::Transparent);
+                optionBox[i].setSize(boxSizes[i]);
+                optionBox[i].setPosition(coords[i]);
+                optionBox[i].setFillColor(sf::Color::Transparent);
             }
 
             pos = 0;
@@ -77,7 +77,7 @@ void LevelMenu::set_values()
             level->setTexture(levels[0]);
         }
 
-int LevelMenu::loop_events()
+int LevelMenu::loopEvents()
         {
             sf::Event event;
             while(window->pollEvent(event))
@@ -87,25 +87,25 @@ int LevelMenu::loop_events()
                     return -2;
                 }
 
-                pos_mouse = sf::Mouse::getPosition(*window);
-                mouse_coord = window->mapPixelToCoords(pos_mouse);
+                posMouse = sf::Mouse::getPosition(*window);
+                mouseCoord = window->mapPixelToCoords(posMouse);
 
-                if (!(option_box[0].getGlobalBounds().contains(mouse_coord))
-                & !(option_box[1].getGlobalBounds().contains(mouse_coord))
-                & !(option_box[2].getGlobalBounds().contains(mouse_coord))
-                & !(option_box[3].getGlobalBounds().contains(mouse_coord))
-                & (mouseselect == true)){
+                if (!(optionBox[0].getGlobalBounds().contains(mouseCoord))
+                & !(optionBox[1].getGlobalBounds().contains(mouseCoord))
+                & !(optionBox[2].getGlobalBounds().contains(mouseCoord))
+                & !(optionBox[3].getGlobalBounds().contains(mouseCoord))
+                & (mouseSelect == true)){
                     back->setScale(1.f, 1.f);
                     select->setScale(1.f, 1.f);
-                    rightarrow->setScale(1.f, 1.f);
-                    leftarrow->setScale(1.f, 1.f);
+                    rightArrow->setScale(1.f, 1.f);
+                    leftArrow->setScale(1.f, 1.f);
                         
                     back->setPosition(coords[0]);
                     select->setPosition(coords[1]);
-                    rightarrow->setPosition(coords[2]);
-                    leftarrow->setPosition(coords[3]);
+                    rightArrow->setPosition(coords[2]);
+                    leftArrow->setPosition(coords[3]);
 
-                    mouseselect == false;
+                    mouseSelect == false;
                 }
                 
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !pressed)
@@ -133,24 +133,24 @@ int LevelMenu::loop_events()
                     pressed == true;
                     return (pos + 1);
                 }
-                if(option_box[0].getGlobalBounds().contains(mouse_coord)) {
-                    mouseselect = true;
+                if(optionBox[0].getGlobalBounds().contains(mouseCoord)) {
+                    mouseSelect = true;
                     back->setScale(1.1f, 1.1f);
                     back->setPosition(coords[0].x - 4, coords[0].y -2);
                     if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
                         return -1;
                 }
-                if(option_box[1].getGlobalBounds().contains(mouse_coord)) {
-                    mouseselect = true;
+                if(optionBox[1].getGlobalBounds().contains(mouseCoord)) {
+                    mouseSelect = true;
                     select->setScale(1.1f, 1.1f);
                     select->setPosition(coords[1].x - 7, coords[1].y -3);
                     if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
                         return (pos + 1);
                 }
-                if(option_box[2].getGlobalBounds().contains(mouse_coord)) {
-                    mouseselect = true;
-                    rightarrow->setScale(1.1f, 1.1f);
-                    rightarrow->setPosition(coords[2].x - 2, coords[2].y -1);
+                if(optionBox[2].getGlobalBounds().contains(mouseCoord)) {
+                    mouseSelect = true;
+                    rightArrow->setScale(1.1f, 1.1f);
+                    rightArrow->setPosition(coords[2].x - 2, coords[2].y -1);
                     if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && pos > 0) {
                         pressed = true;
                         pos--;
@@ -158,10 +158,10 @@ int LevelMenu::loop_events()
                         pressed = false;
                     }
                 }
-                if(option_box[3].getGlobalBounds().contains(mouse_coord)) {
-                    mouseselect = true;
-                    leftarrow->setScale(1.1f, 1.1f);
-                    leftarrow->setPosition(coords[3].x - 2, coords[3].y -1);
+                if(optionBox[3].getGlobalBounds().contains(mouseCoord)) {
+                    mouseSelect = true;
+                    leftArrow->setScale(1.1f, 1.1f);
+                    leftArrow->setPosition(coords[3].x - 2, coords[3].y -1);
                     if(sf::Mouse::isButtonPressed(sf::Mouse::Left) && pos < 7) {
                         pressed = true;
                         pos++;
@@ -173,24 +173,23 @@ int LevelMenu::loop_events()
             return 0;
         }
 
-void LevelMenu::draw_all()
+void LevelMenu::drawAll()
         {
             window->clear();
             window->draw(*background);
             window->draw(*back);
             window->draw(*select);
             window->draw(*level);
-            window->draw(*rightarrow);
-            window->draw(*leftarrow);
+            window->draw(*rightArrow);
+            window->draw(*leftArrow);
             window->display();
         }
- int LevelMenu::run_menu()
+ int LevelMenu::runMenu()
         {
             while(window->isOpen()) {
-                int decision = loop_events();
-                draw_all();
+                int decision = loopEvents();
+                drawAll();
                 if(decision != 0)
                     return decision;
             }
         }
-
