@@ -4,8 +4,6 @@ Esse programa é um jogo do gênero "top-down" com a temática de que você é u
 
 **Observação:** Apesar do menu possuir 8 opções de níveis no menu, apenas 4 níveis foram implementados.
 
-# Puzzle Game(nome provisório)
-
 ## Como Jogar
 
 ### Objetivo
