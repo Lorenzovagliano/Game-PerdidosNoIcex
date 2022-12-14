@@ -28,7 +28,7 @@ Esse programa é um jogo top-down de puzzles com a temática de que você é um 
 Para gerar a documentação, utilizar:
 
     $ doxygen Doxyfile
-**Atenção: Criar antes um diretório ./doc/**
+**Atenção: É necessário ter Doxygen instalado para utilizar este comando e criar antes um diretório ./doc/**. O comando pode depender da sua distro. No Ubuntu, utilizar: sudo apt-get install doxygen
 
 ### **Remover arquivos auxiliares**
 ---
