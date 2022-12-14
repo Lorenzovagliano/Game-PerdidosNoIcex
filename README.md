@@ -1,6 +1,6 @@
 ## **Perdidos no ICEX**
 ---
-Esse programa é um jogo do gênero "top-down" com a temática de que você é um aluno de PDS II e o professor Douglas te deu a missão de pegar o controle do projetor em uma sala do ICEX. Seu objetivo é chegar até o controle lidando com os obstáculos de maneira inteligente dentro do número limitado de movimentos do seu personagem. 
+Esse programa é um jogo top-down de puzzles com a temática de que você é um aluno de PDS II e o professor Douglas te deu a missão de pegar o controle do projetor em uma sala do ICEX. Seu objetivo é chegar até o controle lidando com os obstáculos de maneira inteligente dentro do número limitado de movimentos do seu personagem. 
 
 **Observação:** Apesar do menu possuir 8 opções de níveis no menu, apenas 4 níveis foram implementados.
 
