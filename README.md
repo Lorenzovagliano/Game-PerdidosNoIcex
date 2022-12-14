@@ -6,9 +6,9 @@ Esse programa é um jogo top-down de puzzles com a temática de que você é um 
 
 ### Regras básicas
 * O herói não pode atravessar as paredes laterais da fase.
-* Pedras e caixas podem ser movidas com a condição de que elas possuam um espaço livre atrás no sentido do movimento
+* Mesas e caixas podem ser movidas com a condição de que elas possuam um espaço livre atrás no sentido do movimento
   * Caixas serão destruidas ao serem movidas em direção a um espaço ocupado
-* O herói pode passar por cima das armadilhas, porém elas reduzem seu número de movimentos em dobro em relação a um espaço normal, inclusive quando outro objeto é movido enquanto encima delas
+* O herói pode passar por cima dos fantasmas, porém eles reduzem seu número de movimentos em dobro em relação a um espaço normal, inclusive quando outro objeto é movido enquanto encima deles
 
 ### **Ferramentas** 
 ---
