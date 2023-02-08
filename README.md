@@ -1,8 +1,6 @@
 ## **Perdidos no ICEX**
 ---
 Esse programa é um jogo top-down de puzzles com a temática de que você é um aluno de PDS II e o professor Douglas te deu a missão de pegar o controle do projetor em uma sala do ICEX. Seu objetivo é chegar até o controle lidando com os obstáculos de maneira inteligente dentro do número limitado de movimentos do seu personagem.
-
-**Observação:** Apesar do menu possuir 8 opções de níveis no menu, apenas 4 níveis foram implementados.
 ---
 ![Captura de tela 2023-02-08 192303](https://user-images.githubusercontent.com/111889654/217664809-b94a208c-9110-4ceb-8ed7-b64c6cd16129.png)
 ![Captura de tela 2023-02-08 192309](https://user-images.githubusercontent.com/111889654/217664930-d5c2602e-0eed-4c5b-b527-e09430a26569.png)
@@ -14,7 +12,10 @@ Esse programa é um jogo top-down de puzzles com a temática de que você é um 
   * Caixas serão destruidas ao serem movidas em direção a um espaço ocupado, incluindo fantasmas. Porém, mesas podem ocupar o mesmo espaço de um fantasma.
 * O herói pode passar por cima dos fantasmas, porém eles reduzem seu número de movimentos em dobro em relação a um espaço normal, inclusive quando outro objeto é movido enquanto encima deles.
 * Para passar pelas teias, o herói deve ter encostado na tesoura, podendo assim, cortá-las
-
+---
+**Observação:** 
+Apesar do menu possuir 8 opções de níveis no menu, apenas 4 níveis foram implementados.
+---
 ### **Ferramentas** 
 ---
 - Linguagem: [C++ 11](https://cplusplus.com/doc/)
