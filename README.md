@@ -5,6 +5,7 @@ Esse programa é um jogo top-down de puzzles com a temática de que você é um 
 ![Captura de tela 2023-02-08 192303](https://user-images.githubusercontent.com/111889654/217664809-b94a208c-9110-4ceb-8ed7-b64c6cd16129.png)
 ![Captura de tela 2023-02-08 192309](https://user-images.githubusercontent.com/111889654/217664930-d5c2602e-0eed-4c5b-b527-e09430a26569.png)
 ![Captura de tela 2023-02-08 192314](https://user-images.githubusercontent.com/111889654/217664964-ee4e9898-aa08-45d1-91e5-a30f82d58dbc.png)
+![Captura de tela 2023-02-08 192314](https://user-images.githubusercontent.com/111889654/217668166-c5477248-136e-4745-9eab-ea0357cee3d2.png)
 ---
 ### Regras básicas
 * O herói não pode atravessar as paredes laterais da fase.
