@@ -8,7 +8,7 @@ Esse programa é um jogo top-down de puzzles com a temática de que você é um 
 ![Captura de tela 2023-02-08 194453](https://user-images.githubusercontent.com/111889654/217668309-ee541c01-1ac8-4f07-aa62-02c36ee55475.png)
 ---
 ### Regras básicas
-* O herói não pode atravessar as paredes laterais da fase.
+* O herói não pode atravessar as paredes laterais e as estantes da fase.
 * Mesas e caixas podem ser empurradas com a condição de que elas possuam um espaço livre atrás no sentido do movimento.
   * Caixas serão destruidas ao serem movidas em direção a um espaço ocupado, incluindo fantasmas. Porém, mesas podem ocupar o mesmo espaço de um fantasma.
 * O herói pode passar por cima dos fantasmas, porém eles reduzem seu número de movimentos em dobro em relação a um espaço normal, inclusive quando outro objeto é movido enquanto encima deles.
