@@ -12,7 +12,7 @@ Esse programa é um jogo top-down de puzzles com a temática de que você é um 
 * Mesas e caixas podem ser empurradas com a condição de que elas possuam um espaço livre atrás no sentido do movimento.
   * Caixas serão destruidas ao serem movidas em direção a um espaço ocupado, incluindo fantasmas. Porém, mesas podem ocupar o mesmo espaço de um fantasma.
 * O herói pode passar por cima dos fantasmas, porém eles reduzem seu número de movimentos em dobro em relação a um espaço normal, inclusive quando outro objeto é movido enquanto encima deles.
-* Para passar pelas teias, o herói deve ter encostado na tesoura, podendo assim, cortá-las
+* Para passar pelas teias, o herói deve pegar a tesoura, podendo assim, cortá-las
 ---
 **Observação:** 
 Apesar do menu possuir 8 opções de níveis no menu, apenas 4 níveis foram implementados.
