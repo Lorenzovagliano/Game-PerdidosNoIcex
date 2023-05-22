@@ -1,6 +1,6 @@
 ## **Perdidos no ICEX**
 ---
-This program is a top-down puzzle game where you play as a UFMG CS student, and Professor Douglas has given you the mission to retrieve the projector remote control in a room at the ICEX building. Your objective is to reach the control by cleverly dealing with obstacles within the limited number of moves available for your character.
+This program is a top-down puzzle game where you play as a UFMG CS student, and Professor Douglas has given you the mission to retrieve the projector remote control in a room at the ICEX building. Your objective is to reach the control by cleverly dealing with obstacles within the limited number of moves available.
 ---
 ![Captura de tela 2023-02-08 192303](https://user-images.githubusercontent.com/111889654/217664809-b94a208c-9110-4ceb-8ed7-b64c6cd16129.png)
 ![Captura de tela 2023-02-08 192309](https://user-images.githubusercontent.com/111889654/217664930-d5c2602e-0eed-4c5b-b527-e09430a26569.png)
