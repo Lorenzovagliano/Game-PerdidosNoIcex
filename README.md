@@ -21,6 +21,7 @@ Although the menu has 8 level options, only 4 levels have been implemented so fa
 ---
 - Language: [C++ 11](https://cplusplus.com/doc/)
 - Library: [SFML](https://www.sfml-dev.org/)
+- Compiler: [GCC](https://gcc.gnu.org/)
 - Build: [Make](https://www.gnu.org/software/make/)
 - Documentation: [Doxygen](https://doxygen.nl/)
 
