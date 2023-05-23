@@ -28,6 +28,8 @@ Although the menu has 8 level options, only 4 levels have been implemented so fa
 
 ### **Build Process**
 ---
+To build program, use:
+
     $ make
 **Attention: In order to compile, it is necessary to have the SFML library installed on Linux and to create a "./build/" directory.**. The command may vary depending on your Linux distribution. On Ubuntu, you can use the following command to install SFML: sudo apt-get install libsfml-dev.
 
