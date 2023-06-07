@@ -38,7 +38,7 @@ To build program, use:
 To generate Documentation, use:
 
     $ doxygen Doxyfile
-**Atenção: It is necessary to have Doxygen installed to use this command, and please create a "./doc/" directory beforehand.**. The command may vary depending on your Linux distribution. On Ubuntu, you can use the following command to install Doxygen: sudo apt-get install doxygen
+**Attention: It is necessary to have Doxygen installed to use this command, and please create a "./doc/" directory beforehand.**. The command may vary depending on your Linux distribution. On Ubuntu, you can use the following command to install Doxygen: sudo apt-get install doxygen
 
 ### **Removing object files and executable**
 ---
