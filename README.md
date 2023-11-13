@@ -12,7 +12,7 @@ This program is a top-down puzzle game where you play as a UFMG CS student, and 
 * Tables and boxes can be pushed as long as there is an empty space behind them in the direction of movement.
   * Boxes will be destroyed if moved towards an occupied space, including ghosts. However, tables can occupy the same space as a ghost.
 * The player can move over ghosts, but they consume twice as many movement points as a normal space, even when another object is moved while on top of them.
-* To pass through spider webs, the hero needs to obtain the scissors, which allows them to cut through them.
+* To pass through spider webs, the hero needs to obtain the scissors, which allows them to cut through the webs.
 ---
 **Warning:** 
 Although the menu has 8 level options, only 4 levels have been implemented so far.
@@ -31,7 +31,7 @@ Although the menu has 8 level options, only 4 levels have been implemented so fa
 To build program, use:
 
     make
-**Attention: In order to compile, it is necessary to have the SFML library installed on Linux and to create a "./build/" directory.** The command may vary depending on your Linux distribution. On Ubuntu, you can use the following command to install SFML: sudo apt-get install libsfml-dev.
+**Warning: In order to compile, it is necessary to have the SFML library installed on Linux and to create a "./build/" directory.** The command may vary depending on your Linux distribution. On Ubuntu, you can use the following command to install SFML: sudo apt-get install libsfml-dev.
 
 ### **Execution**
 ---
@@ -44,7 +44,7 @@ To execute the program, use:
 To generate Documentation, use:
 
     doxygen Doxyfile
-**Attention: It is necessary to have Doxygen installed to use this command, and please create a "./doc/" directory beforehand.** The command may vary depending on your Linux distribution. On Ubuntu, you can use the following command to install Doxygen: sudo apt-get install doxygen
+**Warning: It is necessary to have Doxygen installed to use this command, and please create a "./doc/" directory beforehand.** The command may vary depending on your Linux distribution. On Ubuntu, you can use the following command to install Doxygen: sudo apt-get install doxygen
 
 ### **Removing object files and executable**
 ---
